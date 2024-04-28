@@ -1,0 +1,12 @@
+# super user permissions to execute the build
+sudo: required
+#services (to be installed)
+services: 
+  - docker
+
+before_install:
+  - docker build -t ilyassehanafi/frontend -f Dockerfile.dev .
+
+
+script:
+  - docker run ilyassehanafi/frontend npm run test -- --coverage
