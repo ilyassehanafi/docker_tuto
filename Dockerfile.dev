@@ -1,0 +1,11 @@
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+# removes warning caused by the babel dependency --save-dev @babel/plugin-proposal-private-property-in-object
+
+COPY . .
+
+CMD ["npm", "run", "start"]
